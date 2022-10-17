@@ -159,7 +159,7 @@ class Show1 f where
 -- @
 #if MIN_VERSION_base(4,9,0)
 class Functor1 f => IxApplicative (f :: k -> Type -> Type) where
-#elseif
+#else
 class Functor1 f => IxApplicative (f :: k -> * -> *) where
 #endif
   type Identity :: k
@@ -198,7 +198,7 @@ class Functor1 f => IxApplicative (f :: k -> * -> *) where
 -- <Text-XML-Twiml-Syntax.html Text.XML.Twiml.Syntax> module.
 #if MIN_VERSION_base(4,9,0)
 class IxApplicative m => IxMonad (m :: k -> Type -> Type) where
-#elseif
+#else
 class IxApplicative m => IxMonad (m :: k -> * -> *) where
 #endif
   -- | The indexed equivalent of @(>>=)@
