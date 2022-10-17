@@ -152,7 +152,7 @@ specToGADTChildName spec@(TwimlSpec{..}) = go $ zip parameters $ specToGADTNames
   go ((Attributes _, _):rest) = go rest
 
 specToGADTPat :: TwimlSpec -> Pat
-#if MIN_VERSION_template_haskell(2,19,0)
+#if MIN_VERSION_template_haskell(2,18,0)
 specToGADTPat spec@(TwimlSpec{}) = ConP (specToGADTName spec) [] varPs where
   varPs = map VarP $ specToGADTNames spec
 #else
@@ -336,7 +336,7 @@ twimlSpecToData spec@(TwimlSpec{..}) = pure $
     a' = mkName "a"
     i = VarT i'
     a = VarT a'
-#if MIN_VERSION_template_haskell(2,19,0)
+#if MIN_VERSION_template_haskell(2,18,0)
     tyVarBndrs = [KindedTV i' () $ AppT ListT StarT, PlainTV a' ()]
 #else
     tyVarBndrs = [KindedTV i' $ AppT ListT StarT, PlainTV a']
